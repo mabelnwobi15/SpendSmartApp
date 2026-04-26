@@ -10,85 +10,113 @@
 
     <ScrollView
         android:id="@+id/scrollTrends"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="24dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="start"
                 android:text="Spending Trends"
-                android:textColor="@android:color/white"
+                android:textColor="#FFFFFF"
                 android:textSize="26sp"
-                android:textStyle="bold" />
+                android:fontFamily="sans-serif-black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Visualizing your weekly habits"
+                android:textColor="#A0BEE3"
+                android:textSize="14sp"
+                android:layout_marginBottom="24dp" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="260dp"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
+                android:layout_height="300dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardElevation="8dp">
 
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/barChart"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="12dp" />
+                    android:padding="16dp" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardElevation="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="20dp">
 
                     <TextView
                         android:id="@+id/tvWeeklyTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Weekly Total"
-                        android:textSize="16sp"
+                        android:text="Weekly Total: R0.00"
+                        android:textColor="#183B6B"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="#EEEEEE" />
 
                     <TextView
                         android:id="@+id/tvHighestDay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Highest Day" />
+                        android:text="Highest Day"
+                        android:textColor="#555555" />
 
                     <TextView
                         android:id="@+id/tvLowestDay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Lowest Day" />
+                        android:text="Lowest Day"
+                        android:textColor="#555555" />
 
                     <TextView
                         android:id="@+id/tvSmartTip"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="16dp"
                         android:text="Smart Tip"
-                        android:textColor="#20C7B3" />
+                        android:textColor="#20C7B3"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/btnViewLatestReceipt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:backgroundTint="#183B6B"
+                        android:text="View Latest Receipt"
+                        android:textColor="#FFFFFF"
+                        app:cornerRadius="10dp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -98,14 +126,13 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        app:itemIconTint="@null"
-        app:itemTextColor="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#FFFFFF"
+        app:itemIconTint="#183B6B"
+        app:itemTextColor="#183B6B"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

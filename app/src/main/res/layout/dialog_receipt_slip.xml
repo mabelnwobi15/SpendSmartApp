@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="320dp"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="30dp"
+                android:background="#20C7B3"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SPENDSMART"
+                android:layout_marginStart="8dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:letterSpacing="0.05"
+                android:textColor="#183B6B"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Official Transaction Record"
+            android:textSize="12sp"
+            android:textColor="#888888"
+            android:layout_marginTop="2dp"/>
+
+        <ImageView
+            android:id="@+id/ivSlipCategoryIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:padding="10dp"
+            android:src="@android:drawable/ic_menu_gallery"/>
+
+        <TextView
+            android:id="@+id/tvSlipCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CATEGORY"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tvSlipAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="R 0.00"
+            android:textAlignment="center"
+            android:textSize="42sp"
+            android:textStyle="bold"
+            android:textColor="#183B6B"
+            android:layout_marginTop="4dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#EEEEEE"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"/>
+
+        <TextView
+            android:id="@+id/tvSlipDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DATE: 2026-04-27"
+            android:textSize="14sp"
+            android:textColor="#555555"
+            android:fontFamily="monospace"/>
+
+        <TextView
+            android:id="@+id/tvSlipTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TIME: 12:48 AM"
+            android:textSize="14sp"
+            android:textColor="#555555"
+            android:fontFamily="monospace"
+            android:layout_marginTop="4dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvImageContainer"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="12dp"
+            android:visibility="gone">
+            <ImageView
+                android:id="@+id/ivSlipImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btnExitSlip"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:text="DONE"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#183B6B"
+            app:cornerRadius="15dp"/>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

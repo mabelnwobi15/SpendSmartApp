@@ -1,5 +1,6 @@
 package com.example.spendsmart
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -16,9 +17,14 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var btnSignUp: Button
     private lateinit var tvLogin: TextView
 
+    // Initialize DatabaseHelper
+    private lateinit var dbHelper: DatabaseHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
+        dbHelper = DatabaseHelper(this)
 
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
@@ -31,15 +37,10 @@ class RegisterActivity : AppCompatActivity() {
             val password = etPassword.text.toString().trim()
             val confirmPassword = etConfirmPassword.text.toString().trim()
 
+            // 1. Input Validation
             if (email.isEmpty()) {
-                etEmail.error = "Enter your email"
+                etEmail.error = "Enter your email/username"
                 etEmail.requestFocus()
-                return@setOnClickListener
-            }
-
-            if (password.isEmpty()) {
-                etPassword.error = "Enter your password"
-                etPassword.requestFocus()
                 return@setOnClickListener
             }
 
@@ -49,26 +50,46 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            if (confirmPassword.isEmpty()) {
-                etConfirmPassword.error = "Confirm your password"
-                etConfirmPassword.requestFocus()
-                return@setOnClickListener
-            }
-
             if (password != confirmPassword) {
                 etConfirmPassword.error = "Passwords do not match"
                 etConfirmPassword.requestFocus()
                 return@setOnClickListener
             }
 
-            Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+            // 2. Call the Database Registration Function
+            registerUser(email, password)
         }
 
         tvLogin.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
+        }
+    }
+
+    private fun registerUser(user: String, pass: String) {
+        val db = dbHelper.writableDatabase
+        val values = ContentValues().apply {
+            put("username", user)
+            put("password", pass)
+        }
+
+        try {
+            // Using SQLite insert with conflict resolution or checking result
+            val success = db.insert("users", null, values)
+
+            if (success != -1L) {
+                Toast.makeText(this, "Account Created Successfully!", Toast.LENGTH_SHORT).show()
+
+                // Navigate to Login Activity after successful registration
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                // If insert returns -1, it usually means the username (UNIQUE) exists
+                Toast.makeText(this, "Username/Email already exists", Toast.LENGTH_SHORT).show()
+            }
+        } catch (e: Exception) {
+            Toast.makeText(this, "Database Error: ${e.message}", Toast.LENGTH_SHORT).show()
         }
     }
 }

@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#183B6B"
-    tools:context=".AddExpenseActivity">
+    android:background="#183B6B">
 
     <ScrollView
-        android:id="@+id/scrollAddExpense"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:fillViewport="true"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,128 +18,172 @@
             android:padding="20dp">
 
             <TextView
-                android:id="@+id/tvAddExpenseTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Add Expense"
-                android:textColor="@android:color/white"
+                android:text="Add New Expense"
+                android:textColor="#FFFFFF"
                 android:textSize="28sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"/>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="6dp">
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="20dp">
+                    android:padding="24dp">
 
                     <EditText
                         android:id="@+id/etAmount"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Amount"
-                        android:inputType="numberDecimal"
-                        android:minHeight="48dp"
-                        android:padding="12dp" />
+                        android:layout_height="60dp"
+                        android:hint="Amount (R)"
+                        android:textSize="18sp"
+                        android:inputType="numberDecimal" />
 
-                    <AutoCompleteTextView
-                        android:id="@+id/actCategory"
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:hint="Select Category"
-                        android:minHeight="48dp"
-                        android:padding="12dp" />
+                        android:layout_marginTop="12dp"
+                        android:hint="Choose Category">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/actCategory"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:textSize="16sp"
+                            android:minHeight="55dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
+                        android:orientation="horizontal"
+                        android:layout_marginTop="16dp">
                         <EditText
                             android:id="@+id/etDate"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="60dp"
                             android:layout_weight="1"
-                            android:focusable="false"
-                            android:hint="Select Date"
-                            android:minHeight="48dp"
-                            android:padding="12dp" />
-
+                            android:textSize="16sp"
+                            android:hint="YYYY-MM-DD"
+                            android:focusable="false" />
                         <ImageButton
                             android:id="@+id/btnPickDate"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_marginStart="8dp"
-                            android:backgroundTint="#20C7B3"
-                            android:contentDescription="Pick Date"
-                            android:src="@android:drawable/ic_menu_my_calendar" />
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@android:drawable/ic_menu_my_calendar"
+                            android:scaleType="centerInside"
+                            android:backgroundTint="#20C7B3"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
+                        android:orientation="horizontal"
+                        android:layout_marginTop="12dp">
                         <EditText
                             android:id="@+id/etTime"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="60dp"
                             android:layout_weight="1"
-                            android:focusable="false"
-                            android:hint="Select Time"
-                            android:minHeight="48dp"
-                            android:padding="12dp" />
-
+                            android:textSize="16sp"
+                            android:hint="Time"
+                            android:focusable="false" />
                         <ImageButton
                             android:id="@+id/btnPickTime"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_marginStart="8dp"
-                            android:backgroundTint="#20C7B3"
-                            android:contentDescription="Pick Time"
-                            android:src="@android:drawable/ic_lock_idle_alarm" />
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@android:drawable/ic_lock_idle_alarm"
+                            android:scaleType="centerInside"
+                            android:backgroundTint="#20C7B3"/>
                     </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/etDescription"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Receipt Management"
+                        android:layout_marginTop="20dp"
+                        android:textSize="16sp"
+                        android:textColor="#333333"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:hint="Description (Optional)"
-                        android:inputType="textMultiLine"
-                        android:minHeight="48dp"
-                        android:padding="12dp" />
+                        android:orientation="horizontal"
+                        android:weightSum="3"
+                        android:layout_marginTop="10dp">
+
+                        <Button
+                            android:id="@+id/btnCaptureReceipt"
+                            android:layout_width="0dp"
+                            android:layout_height="70dp"
+                            android:layout_weight="1"
+                            android:text="Camera"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:backgroundTint="#FF5722"
+                            android:layout_marginEnd="4dp"/>
+
+                        <Button
+                            android:id="@+id/btnUploadReceipt"
+                            android:layout_width="0dp"
+                            android:layout_height="70dp"
+                            android:layout_weight="1"
+                            android:text="Gallery"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:backgroundTint="#607D8B"
+                            android:layout_marginEnd="4dp"/>
+
+                        <Button
+                            android:id="@+id/btnViewReceiptHistory"
+                            android:layout_width="0dp"
+                            android:layout_height="70dp"
+                            android:layout_weight="1"
+                            android:text="History"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:backgroundTint="#9C27B0"/>
+                    </LinearLayout>
 
                     <Button
-                        android:id="@+id/btnUploadReceipt"
+                        android:id="@+id/btnGeneratePDF"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="18dp"
-                        android:backgroundTint="#5C6BC0"
-                        android:text="UPLOAD RECEIPT"
-                        android:textColor="@android:color/white"
-                        android:textStyle="bold" />
+                        android:layout_height="65dp"
+                        android:layout_marginTop="12dp"
+                        android:text="Generate PDF Receipt"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:backgroundTint="#3F51B5" />
+
+                    <ImageView
+                        android:id="@+id/ivReceiptPreview"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:layout_marginTop="15dp"
+                        android:background="#F0F0F0"
+                        android:scaleType="centerInside"
+                        android:visibility="gone" />
 
                     <Button
                         android:id="@+id/btnSaveExpense"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:backgroundTint="#20C7B3"
+                        android:layout_height="75dp"
+                        android:layout_marginTop="25dp"
                         android:text="SAVE EXPENSE"
-                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        android:backgroundTint="#20C7B3"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -155,14 +193,10 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        app:itemIconTint="@null"
-        app:itemTextColor="@android:color/black"
-        app:menu="@menu/bottom_nav_menu"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:menu="@menu/bottom_nav_menu"
+        android:background="#FFFFFF"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
